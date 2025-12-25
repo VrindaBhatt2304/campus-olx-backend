@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export async function connectDB() {
     try{
-        mongoose.connect(process.env.DB_URL,{useNewUrlParser:true,useUnifiedTopology:true})
+        await mongoose.connect(process.env.DB_URL,{useNewUrlParser:true,useUnifiedTopology:true})
     .then(()=>{
         console.log("Connection established!");
     })
