@@ -24,7 +24,7 @@ app.listen(PORT, ()=>{
         console.log("Connection established!");
     })
     .catch((e)=>{
-        console.log(e);
+        console.error(e);
     })
 })
 
