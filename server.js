@@ -19,7 +19,7 @@ app.use("/product",productRouter);
 const PORT=process.env.PORT || 5000
 app.listen(PORT, ()=>{
     console.log("The port is running!");
-    mongoose.connect(process.env.DB_URL)
+    mongoose.connect(process.env.DB_URL,{useNewUrlParser:true,useUnifiedTopology:true})
     .then(()=>{
         console.log("Connection established!");
     })
@@ -27,3 +27,5 @@ app.listen(PORT, ()=>{
         console.log(e);
     })
 })
+
+export default app;
