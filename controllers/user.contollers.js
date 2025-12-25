@@ -8,6 +8,7 @@ export async function get(req, res) {
     res.json(users);
   } catch (e) {
     console.log(e);
+    res.status(400).json({msg:"Some Error Occured!!",e});
   }
 }
 
