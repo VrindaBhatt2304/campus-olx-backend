@@ -5,6 +5,7 @@ import category_router from "./routes/categories.routes.js"
 import userRoute from "./routes/user.routes.js";
 import productRouter from "./routes/products.routes.js";
 import cors from "cors";
+import { connectDB } from "./config/db.js";
 
 const app=express();
 
@@ -17,15 +18,9 @@ app.use("/user",userRoute);
 app.use("/product",productRouter);
 
 const PORT=process.env.PORT || 5000
+connectDB();
 app.listen(PORT, ()=>{
     console.log("The port is running!");
-    mongoose.connect(process.env.DB_URL,{useNewUrlParser:true,useUnifiedTopology:true})
-    .then(()=>{
-        console.log("Connection established!");
-    })
-    .catch((e)=>{
-        console.error(e);
-    })
 })
 
 export default app;
