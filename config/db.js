@@ -1,17 +1,15 @@
 import mongoose from "mongoose";
 
-export async function connectDB() {
-    try{
-        await mongoose.connect(process.env.DB_URL,{useNewUrlParser:true,useUnifiedTopology:true})
-    .then(()=>{
-        console.log("Connection established!");
-    })
-    .catch((e)=>{
-        console.error(e);
-    })
+export const connectDB = async () => {
+    try {
+        const mongooseURI = process.env.DB_URL
+        if (!mongooseURI) {
+            throw new Error("MONGO DB URI is not found.");
+        }
+        await mongoose.connect(mongooseURI, {});
     }
-    catch(e){
-        console.error(e);
+    catch (e) {
+        console.log("Mongoose Connection Error:", e.message);
         process.exit(1);
     }
 }
